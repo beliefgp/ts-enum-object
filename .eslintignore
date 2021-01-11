@@ -1,0 +1,6 @@
+node_modules
+webpack.config.js
+lib
+es
+jest.config.ts
+gulpfile.ts

@@ -1,0 +1,53 @@
+{
+  "name": "ts-enum-object",
+  "version": "1.0.0",
+  "description": "resolve TypeScript enum value do not support objects",
+  "keywords": [
+    "typescript",
+    "enum",
+    "object value"
+  ],
+  "files": [
+    "es",
+    "lib"
+  ],
+  "types": "es/index.d.ts",
+  "scripts": {
+    "build": "gulp",
+    "clean": "rimraf -rf lib es ",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.12.0",
+    "@typescript-eslint/parser": "^4.12.0",
+    "eslint": "^7.17.0",
+    "gulp": "^4.0.2",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "lodash": "^4.17.20",
+    "prettier": "^2.2.1",
+    "typescript": "^4.1.3"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.20",
+    "@types/lodash": "^4.14.167",
+    "gulp": "^4.0.2",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "merge2": "^1.4.1",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^26.4.4",
+    "ts-node": "^9.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beliefgp/ts-enum-object.git"
+  },
+  "engines": {
+    "install-node": "12"
+  },
+  "bugs": {
+    "url": "https://github.com/beliefgp/ts-enum-object/issues"
+  },
+  "homepage": "https://github.com/beliefgp/ts-enum-object#readme",
+  "author": "beliefgp",
+  "license": "MIT"
+}

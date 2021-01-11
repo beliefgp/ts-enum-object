@@ -1,0 +1,14 @@
+{
+  "editor.tabSize": 2,
+  "files.autoSave": "off",
+  "eslint.validate": [
+      "typescript",
+  ],
+  "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true,
+  },
+  "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true,
+  },
+}
