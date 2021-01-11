@@ -1,6 +1,6 @@
 {
   "name": "ts-enum-object",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "resolve TypeScript enum value do not support objects",
   "keywords": [
     "typescript",
