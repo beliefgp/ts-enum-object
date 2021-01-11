@@ -13,7 +13,7 @@ $ npm i ts-enum-object --save
 * createEnumObject(items: Arry<{ name: string; value: any; label?: string; ...other }>)  
   创建一个枚举对象，`name` 与 `value` 为必填，`name` 代表枚举对象的 key。
 
-  **TypeScript 下入参的枚举【务必】【务必】【务必】加 `as const`，否则无法正常推导出 Key 的类型**
+  **TypeScript 下入参的数组【务必】【务必】【务必】加 `as const`，否则无法正常推导出 Key 的类型**
 
   ```ts
   import { createEnumObject } from 'ts-enum-object';
@@ -79,7 +79,7 @@ $ npm i ts-enum-object --save
   ```
 
 * .getItemByName(valueOfName)
-  根据枚举配置对象中字段 name 及其值，获取对应的枚举配置项。
+  根据枚举配置对象中字段 `name` 的值，获取对应的枚举配置项。
 
   ```ts
   import { createEnumObject } from 'ts-enum-object';
@@ -94,7 +94,7 @@ $ npm i ts-enum-object --save
   ```
 
 * .getItemByValue(valueOfValue)
-  根据枚举配置对象中字段 value 及其值，获取对应的枚举配置项。
+  根据枚举配置对象中字段 `value` 的值，获取对应的枚举配置项。
 
   ```ts
   import { createEnumObject } from 'ts-enum-object';
@@ -109,7 +109,7 @@ $ npm i ts-enum-object --save
   ```
 
 * .getLabel(valueOfNameOrValue)
-  根据条目某个字段 key 及其 值，获取对应的枚举配置项。
+  根据枚举配置对象中字段 `name` 或者 `value` 的值，获取对应的 `label`。
 
   ```ts
   import { createEnumObject } from 'ts-enum-object';
