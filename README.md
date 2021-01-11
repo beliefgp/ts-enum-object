@@ -63,7 +63,7 @@ $ npm i ts-enum-object --save
   //   { name: 'C', value: 3, label: 'CC', },
   // ]
   ```
-* .getItemBy(key, valueOfKey)
+* .getItemBy(key, valueOfKey)   
   根据枚举配置对象中某个字段的名字及其值，获取对应的枚举配置项(如果会出现重复，只返回第一个)。
 
   ```ts
@@ -78,7 +78,7 @@ $ npm i ts-enum-object --save
   TestEnum.getItemBy('label', 'AA') // { name: 'A', value: 1, label: 'AA', }
   ```
 
-* .getItemByName(valueOfName)
+* .getItemByName(valueOfName)   
   根据枚举配置对象中字段 `name` 的值，获取对应的枚举配置项。
 
   ```ts
@@ -93,7 +93,7 @@ $ npm i ts-enum-object --save
   TestEnum.getItemByName('A') // { name: 'A', value: 1, label: 'AA', }
   ```
 
-* .getItemByValue(valueOfValue)
+* .getItemByValue(valueOfValue)   
   根据枚举配置对象中字段 `value` 的值，获取对应的枚举配置项。
 
   ```ts
@@ -108,7 +108,7 @@ $ npm i ts-enum-object --save
   TestEnum.getItemByValue(1) // { name: 'A', value: 1, label: 'AA', }
   ```
 
-* .getLabel(valueOfNameOrValue)
+* .getLabel(valueOfNameOrValue)   
   根据枚举配置对象中字段 `name` 或者 `value` 的值，获取对应的 `label`。
 
   ```ts
