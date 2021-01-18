@@ -192,6 +192,7 @@ export type EnumItemType<
   ? T[49]
   : EnumItem;
 
+// @ts-ignore
 type EnumItemValue<
   T extends EnumItemList,
   K extends EnumFieldKey<T>,
@@ -237,3 +238,23 @@ type EnumObjectFunctionType<T extends EnumItemList> = {
  * @description 目前 TypeScript 下 name 类型自动映射只支持 50 个，应该可以满足绝大部分场景了
  */
 export type EnumObject<T extends EnumItemList> = EnumObjectFunctionType<T> & EnumObjectKeyValueType<T>;
+
+type GetEnumItemList<T> = T extends EnumObject<infer List> ? List : never;
+
+/**
+ * 枚举对象所有 name 类型
+ */
+export type EnumObjectNamesType<T extends EnumObject<any>> = EnumFieldValue<GetEnumItemList<T>, 'name'>;
+
+/**
+ * 枚举对象所有 value 类型
+ */
+export type EnumObjectValuesType<T extends EnumObject<any>> = EnumFieldValue<GetEnumItemList<T>, 'value'>;
+
+/**
+ * 获取枚举对象某个字段的类型
+ */
+export type EnumObjectFieldValueType<
+  T extends EnumObject<any>,
+  K extends EnumFieldKey<GetEnumItemList<T>>
+> = EnumFieldValue<GetEnumItemList<T>, K>;

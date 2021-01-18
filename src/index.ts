@@ -1,5 +1,12 @@
 import cloneDeep from 'lodash/cloneDeep';
-import type { EnumFieldValue, EnumItemList, EnumObject } from './type';
+import type {
+  EnumFieldValue,
+  EnumItemList,
+  EnumObject,
+  EnumObjectFieldValueType,
+  EnumObjectNamesType,
+  EnumObjectValuesType,
+} from './type';
 
 const isNullValue = (value: any) => value === null || value === undefined;
 
@@ -21,7 +28,9 @@ export const createEnumObject = <T extends EnumItemList>(items: T): EnumObject<T
 
   const enumValues = new Set<any>();
 
-  for (const item of items) {
+  for (let index = 0; index < items.length; index++) {
+    const item = items[index];
+
     if (isNullValue(item.name) || isNullValue(item.value)) {
       throw new Error('the name or value of enum item can not be null or undefined');
     }
@@ -72,3 +81,5 @@ export const createEnumObject = <T extends EnumItemList>(items: T): EnumObject<T
 
   return enumObject;
 };
+
+export type { EnumObjectNamesType, EnumObjectValuesType, EnumObjectFieldValueType };

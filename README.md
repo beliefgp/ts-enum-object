@@ -123,3 +123,24 @@ $ npm i ts-enum-object --save
   TestEnum.getLabel('A') // 'AA'
   TestEnum.getLabel(1) // 'AA'
   ```
+
+* EnumObjectNamesType\<EnumObjectType\>   
+  Typescript 类型方法，获取枚举对象的所有 Name 类型。
+
+  ```ts
+  type Names = EnumObjectNamesType<typeof TestEnum>; // A | B | C
+  ```
+
+* EnumObjectValuesType\<EnumObjectType\>    
+  Typescript 类型方法，获取枚举对象的所有 Name 类型。
+
+  ```ts
+  type Values = EnumObjectValuesType<typeof TestEnum>; // 1 | 2 | 3
+  ```
+
+* EnumObjectFieldValueType\<EnumObjectType, FiledNameType\>    
+  Typescript 类型方法，获取枚举对象的所有 Name 类型。
+
+  ```ts
+  type Names = EnumObjectFieldValueType<typeof TestEnum, 'name'>; // A | B | C
+  ```
