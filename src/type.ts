@@ -206,13 +206,17 @@ type EnumItemValue<
  */
 type EnumObjectFunctionType<T extends EnumItemList> = {
   /**
-   * 枚举所有的值
-   */
-  values: () => T;
-  /**
-   * 枚举所有的 key，既每个 item 里的 name
+   * 枚举所有的 key 数组集合，既每个 item 里的 name
    */
   keys: () => EnumFieldValue<T, 'name'>;
+  /**
+   * 枚举所有的 value 数组集合，既每个 item 里的 value
+   */
+  values: () => EnumFieldValue<T, 'value'>;
+  /**
+   * 枚举所有的配置项
+   */
+  items: () => T;
   /**
    * 根据某个 key 的值获取枚举 item
    */

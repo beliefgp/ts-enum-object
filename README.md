@@ -1,6 +1,6 @@
 # ts-enum-object
 
-解决 TypeScript 下枚举值无法为对象，以及保证枚举值有序性的一些应用场景。
+解决 TypeScript 下枚举值无法为对象，以及保证枚举值有序性的一些应用场景，并提供了完整的 TypeScript 类型映射。
 
 ## 安装
 
@@ -10,8 +10,8 @@ $ npm i ts-enum-object --save
 
 ## API
 
-* createEnumObject(items: Arry<{ name: string; value: any; label?: string; ...other }>)  
-  创建一个枚举对象，`name` 与 `value` 为必填，`name` 代表枚举对象的 key。
+* createEnumObject(items: Array<{ name: string; value: any; label?: string; ...other }>)  
+  创建一个枚举对象，`name` 与 `value` 为必填，`name` 代表枚举对象的 key，其他字段可以按业务需求扩展。
 
   **TypeScript 下入参的数组【务必】【务必】【务必】加 `as const`，否则无法正常推导出 Key 的类型**
 
@@ -45,6 +45,20 @@ $ npm i ts-enum-object --save
   ```
 
 * .values()  
+  获取枚举所有 `value`。
+
+  ```ts
+  import { createEnumObject } from 'ts-enum-object';
+
+  const TestEnum = createEnumObject([
+    { name: 'A', value: 1, label: 'AA', },
+    { name: 'B', value: 2, label: 'BB', },
+    { name: 'C', value: 3, label: 'CC', },
+  ] as const); // as const is required
+
+  TestEnum.values() // [1, 2, 3]
+
+* .items()  
   获取枚举列表，也就是 createEnumObject 的入参。
 
   ```ts
@@ -56,7 +70,7 @@ $ npm i ts-enum-object --save
     { name: 'C', value: 3, label: 'CC', },
   ] as const); // as const is required
 
-  TestEnum.values()
+  TestEnum.items()
   // [
   //   { name: 'A', value: 1, label: 'AA', },
   //   { name: 'B', value: 2, label: 'BB', },

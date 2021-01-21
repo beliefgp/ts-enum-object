@@ -55,7 +55,9 @@ test('enum object function will be right', () => {
   const TestEnum = createEnum();
 
   expect(TestEnum.keys()).toEqual(['A', 'B', 'C']);
-  expect(TestEnum.values()).toEqual([
+  expect(TestEnum.values()).toEqual([1, 2, 3]);
+  expect(TestEnum.keys()).toEqual(['A', 'B', 'C']);
+  expect(TestEnum.items()).toEqual([
     { name: 'A', value: 1, label: 'AA' },
     { name: 'B', value: 2, label: 'BB' },
     { name: 'C', value: 3, label: 'CC' },

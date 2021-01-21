@@ -18,8 +18,8 @@ const defineProtectedProperty = (obj: any, key: string, value: any) =>
     enumerable: false,
   });
 
-export const createEnumObject = <T extends EnumItemList>(items: T): EnumObject<T> => {
-  if (!Array.isArray(items)) {
+export const createEnumObject = <T extends EnumItemList>(enumItems: T): EnumObject<T> => {
+  if (!Array.isArray(enumItems)) {
     throw new Error('enum items must be array');
   }
   const enumObject = Object.create(null);
@@ -28,8 +28,8 @@ export const createEnumObject = <T extends EnumItemList>(items: T): EnumObject<T
 
   const enumValues = new Set<any>();
 
-  for (let index = 0; index < items.length; index++) {
-    const item = items[index];
+  for (let index = 0; index < enumItems.length; index++) {
+    const item = enumItems[index];
 
     if (isNullValue(item.name) || isNullValue(item.value)) {
       throw new Error('the name or value of enum item can not be null or undefined');
@@ -50,12 +50,14 @@ export const createEnumObject = <T extends EnumItemList>(items: T): EnumObject<T
     enumObject[item.name] = item.value;
   }
 
-  const values = () => cloneDeep(items);
-
   const keys = () => [...enumKeys];
 
+  const values = () => [...enumValues];
+
+  const items = () => cloneDeep(enumItems);
+
   const getItemBy = (key: string, value: any) => {
-    return items.find(item => item[key] === value);
+    return enumItems.find(item => item[key] === value);
   };
 
   const getItemByName = (name: string) => {
@@ -74,6 +76,7 @@ export const createEnumObject = <T extends EnumItemList>(items: T): EnumObject<T
 
   defineProtectedProperty(enumObject, 'keys', keys);
   defineProtectedProperty(enumObject, 'values', values);
+  defineProtectedProperty(enumObject, 'items', items);
   defineProtectedProperty(enumObject, 'getItemBy', getItemBy);
   defineProtectedProperty(enumObject, 'getItemByName', getItemByName);
   defineProtectedProperty(enumObject, 'getItemByValue', getItemByValue);
