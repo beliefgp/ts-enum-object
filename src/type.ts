@@ -208,11 +208,11 @@ type EnumObjectFunctionType<T extends EnumItemList> = {
   /**
    * 枚举所有的 key 数组集合，既每个 item 里的 name
    */
-  keys: () => EnumFieldValue<T, 'name'>;
+  keys: () => Array<EnumFieldValue<T, 'name'>>;
   /**
    * 枚举所有的 value 数组集合，既每个 item 里的 value
    */
-  values: () => EnumFieldValue<T, 'value'>;
+  values: () => Array<EnumFieldValue<T, 'value'>>;
   /**
    * 枚举所有的配置项
    */
