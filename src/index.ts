@@ -1,4 +1,4 @@
-import cloneDeep from 'lodash/cloneDeep';
+// import cloneDeep from 'lodash/cloneDeep';
 import type {
   EnumFieldValue,
   EnumItemList,
@@ -54,7 +54,7 @@ export const createEnumObject = <T extends EnumItemList>(enumItems: T): EnumObje
 
   const values = () => [...enumValues];
 
-  const items = () => cloneDeep(enumItems);
+  const items = () => enumItems;
 
   const getItemBy = (key: string, value: any) => {
     return enumItems.find(item => item[key] === value);
@@ -85,4 +85,4 @@ export const createEnumObject = <T extends EnumItemList>(enumItems: T): EnumObje
   return enumObject;
 };
 
-export type { EnumObjectNamesType, EnumObjectValuesType, EnumObjectFieldValueType };
+export type { EnumObject, EnumObjectNamesType, EnumObjectValuesType, EnumObjectFieldValueType };
