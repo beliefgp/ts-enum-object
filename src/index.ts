@@ -54,7 +54,7 @@ export const createEnumObject = <T extends EnumItemList>(enumItems: T): EnumObje
 
   const values = () => [...enumValues];
 
-  const items = () => enumItems;
+  const items = () => [...enumItems];
 
   const getItemBy = (key: string, value: any) => {
     return enumItems.find(item => item[key] === value);

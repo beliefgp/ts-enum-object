@@ -89,7 +89,7 @@ type EnumObjectKeyValueType<T extends EnumItemList> = EnumObjectItem<T, 0> &
 export type EnumItemType<
   T extends EnumItemList,
   K extends EnumFieldKey<T>,
-  V extends EnumFieldValue<T, K>
+  V extends EnumFieldValue<T, K>,
 > = V extends EnumFieldValue<T, K, 0>
   ? T[0]
   : V extends EnumFieldValue<T, K, 1>
@@ -192,14 +192,12 @@ export type EnumItemType<
   ? T[49]
   : EnumItem;
 
-// @ts-ignore
 type EnumItemValue<
   T extends EnumItemList,
   K extends EnumFieldKey<T>,
   V extends EnumFieldValue<T, K>,
-  R extends EnumFieldKey<T>
-  // @ts-ignore
-> = EnumItemType<T, K, V>[R];
+  R extends EnumFieldKey<T>,
+> = R extends keyof EnumItemType<T, K, V> ? EnumItemType<T, K, V>[R] : unknown;
 
 /**
  * 枚举对象方法
@@ -234,7 +232,9 @@ type EnumObjectFunctionType<T extends EnumItemList> = {
    */
   getLabel: <V extends EnumFieldValue<T, 'value'> | EnumFieldValue<T, 'name'>>(
     value: V,
-  ) => EnumItemValue<T, 'name', V, 'label'> | EnumItemValue<T, 'value', V, 'label'>;
+  ) => V extends EnumFieldValue<T, 'name'>
+    ? EnumItemValue<T, 'name', V, 'label'>
+    : EnumItemValue<T, 'value', V, 'label'>;
 };
 
 /**
@@ -260,5 +260,5 @@ export type EnumObjectValuesType<T extends EnumObject<any>> = EnumFieldValue<Get
  */
 export type EnumObjectFieldValueType<
   T extends EnumObject<any>,
-  K extends EnumFieldKey<GetEnumItemList<T>>
+  K extends EnumFieldKey<GetEnumItemList<T>>,
 > = EnumFieldValue<GetEnumItemList<T>, K>;
