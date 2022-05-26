@@ -218,23 +218,26 @@ type EnumObjectFunctionType<T extends EnumItemList> = {
   /**
    * 根据某个 key 的值获取枚举 item
    */
-  getItemBy: <K extends EnumFieldKey<T>, V extends EnumFieldValue<T, K>>(key: K, value: V) => EnumItemType<T, K, V>;
+  getItemBy<K extends EnumFieldKey<T>, V extends EnumFieldValue<T, K>>(key: K, value: V): EnumItemType<T, K, V>;
+  getItemBy<K extends EnumFieldKey<T>>(key: K, value: any): T[number] | undefined;
+  getItemBy(key: string, value: any): T[number] | undefined;
   /**
    * 根据 name 值获取枚举 item
    */
-  getItemByName: <K extends 'name', V extends EnumFieldValue<T, K>>(name: V) => EnumItemType<T, K, V>;
+  getItemByName<K extends 'name', V extends EnumFieldValue<T, K>>(name: V): EnumItemType<T, K, V>;
+  getItemByName(name: string): T[number] | undefined;
   /**
    * 根据 value 值获取枚举 item
    */
-  getItemByValue: <K extends 'value', V extends EnumFieldValue<T, K>>(value: V) => EnumItemType<T, K, V>;
+  getItemByValue<K extends 'value', V extends EnumFieldValue<T, K>>(value: V): EnumItemType<T, K, V>;
+  getItemByValue(value: any): T[number] | undefined;
   /**
    * 根据枚举的 name 或者 value 获取字段描述 label
    */
-  getLabel: <V extends EnumFieldValue<T, 'value'> | EnumFieldValue<T, 'name'>>(
+  getLabel<V extends EnumFieldValue<T, 'value'> | EnumFieldValue<T, 'name'>>(
     value: V,
-  ) => V extends EnumFieldValue<T, 'name'>
-    ? EnumItemValue<T, 'name', V, 'label'>
-    : EnumItemValue<T, 'value', V, 'label'>;
+  ): V extends EnumFieldValue<T, 'name'> ? EnumItemValue<T, 'name', V, 'label'> : EnumItemValue<T, 'value', V, 'label'>;
+  getLabel(value: any): EnumFieldValue<T, 'label'> | undefined;
 };
 
 /**
