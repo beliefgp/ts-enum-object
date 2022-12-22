@@ -18,7 +18,7 @@ const defineProtectedProperty = (obj: any, key: string, value: any) =>
     enumerable: false,
   });
 
-export const createEnumObject = <T extends EnumItemList>(enumItems: T): EnumObject<T> => {
+export function createEnumObject<T extends EnumItemList>(enumItems: T): EnumObject<T> {
   if (!Array.isArray(enumItems)) {
     throw new Error('enum items must be array');
   }
@@ -83,6 +83,6 @@ export const createEnumObject = <T extends EnumItemList>(enumItems: T): EnumObje
   defineProtectedProperty(enumObject, 'getLabel', getLabel);
 
   return enumObject;
-};
+}
 
 export type { EnumObject, EnumObjectNamesType, EnumObjectValuesType, EnumObjectFieldValueType };
